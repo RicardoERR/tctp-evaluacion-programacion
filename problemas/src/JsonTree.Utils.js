@@ -1,5 +1,5 @@
 // Función que recorre el json y devuelve un objeto con el arbol aplanado.
-const flattenJsonTree = (element, result) => {
+flattenJsonTree = (element, result) => {
   if (element instanceof Array)
     element.forEach(item => { flattenJsonTree(item, result); });
   else if (element instanceof Object) {
@@ -10,11 +10,11 @@ const flattenJsonTree = (element, result) => {
   }
 }
 // Función que formatea todos los cursos de los nodos hijos tipo Curso dento del nodo tipo Sede pasado como parámetro
-const getGradesFromNodo = (Nodo = []) => {
+getGradesFromNodo = (Nodo = []) => {
   return Nodo.filter((key) => Array.isArray(key)).flat();
 }
 // Función booleana que determina si existe el curso ofrecido dentro de los nodos hijos tipo Oferta del nodo tipo Seccion
-const isCourseOffered = (Nodo, offeredCourse) => {
+isCourseOffered = (Nodo, offeredCourse) => {
   const stack = [...Nodo].flat();
   while (stack.length) {
     const node = stack.pop()
@@ -23,16 +23,16 @@ const isCourseOffered = (Nodo, offeredCourse) => {
   return false
 }
 // Función que filtra según el nombre del curso en los nodos hijos tipo Curso del nodo tipo Sede
-const FilterGradeByName = (Nodo, gradeName) => {
+FilterGradeByName = (Nodo, gradeName) => {
     return Nodo.filter(actualGrade => actualGrade.nombre == gradeName);
 }
 // Función que formatea todas las secciones contenidas en los nodos hijos tipo Seccion del nodo tipo Curso
-const GetSectionsFromGrade = (Nodo) => {
+GetSectionsFromGrade = (Nodo) => {
     return Nodo.map(grade => grade.hijos).flat();
 }
 // Función que filtra según el nombre de la sección en los nodos hijos tipo Seccion del nodo tipo Curso
-const getOffersFromSection = (Nodo, sectionName) => {
-    return Nodo.filter(actualSection => actualSection.nombre == sectionName).map(section => section.hijos).flat()
+getOffersFromSection = (Nodo, sectionName) => {
+    return Nodo.filter(actualSection => actualSection.nombre == sectionName).map(section => section.hijos).flat();
 }
 
 module.exports = {

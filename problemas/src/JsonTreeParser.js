@@ -1,4 +1,4 @@
-const Utils = require('./JsonTree.Utils')
+require('./JsonTree.Utils')
 
 module.exports = class JsonTreeParser  {
     data = [];
@@ -6,7 +6,7 @@ module.exports = class JsonTreeParser  {
 
     constructor(data = []){
         this.data = data;
-        Utils.flattenJsonTree(this.data, this.flattendata); // Aplanamos el arbol de objetos que es obtenido del json, su utilidad se menciona abajo.
+        flattenJsonTree(this.data, this.flattendata); // Aplanamos el arbol de objetos que es obtenido del json, su utilidad se menciona abajo.
     }
     /*
         Para los métodos showChidlessNodes, getNodesByAmountOfChildrens y countTotalNodes lo que haremos será aplanar el árbol del JSON,
@@ -43,11 +43,11 @@ module.exports = class JsonTreeParser  {
         let NodesThatOfferCourse = [];
         while (stack.length){
             const actualNode = stack.pop();
-            let grades = Utils.getGradesFromNodo(Object.values(actualNode));
-            let gradeFiltered = Utils.FilterGradeByName(grades, payload.gradeName);
-            let sectionsFromGrade = Utils.GetSectionsFromGrade(gradeFiltered);
-            let getOffersFromSection = Utils.getOffersFromSection(sectionsFromGrade, payload.sectionName);
-            if (Utils.isCourseOffered(getOffersFromSection,payload.offeredCourse)) NodesThatOfferCourse.push(actualNode.nombre);
+            let grades = getGradesFromNodo(Object.values(actualNode));
+            let gradeFiltered = FilterGradeByName(grades, payload.gradeName);
+            let sectionsFromGrade = GetSectionsFromGrade(gradeFiltered);
+            let offersFromSection = getOffersFromSection(sectionsFromGrade, payload.sectionName);
+            if (isCourseOffered(offersFromSection,payload.offeredCourse)) NodesThatOfferCourse.push(actualNode.nombre);
         }
         return NodesThatOfferCourse;
     }

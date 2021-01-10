@@ -16,17 +16,17 @@ const data = require("./src/input-p1.json");
 const JsonTreeParser = require('./src/JsonTreeParser')
 const JsonTreeParserObj = new JsonTreeParser(data);
 
-console.log(JsonTreeParserObj.countTotalNodes());
+console.log("1. Nodos que no tienen hijos: ",JsonTreeParserObj.showChidlessNodes());
 
+// Enviamos la cantidad de hijos que deben tener los nodos a filtrar
+console.log("2. Nodos que contienen 4 hijos: ",JsonTreeParserObj.getNodesByAmountOfChildrens(4));
+
+console.log("3. Cantidad de nodos totales: ",JsonTreeParserObj.countTotalNodes());
 // Para utilizar la función filterNodeByOffer de la estructura JsonTreeParser enviaremos un payload con el Curso, la Oferta y la Sección a Filtrar
 // De esta forma podemos hacer un filtro más dinámico según sea necesario.
 var payload = {
     offeredCourse: "Tecnología",
     gradeName: "4 Medio",
-    sectioName: "A"
+    sectionName: "A"
 };
-console.log(JsonTreeParserObj.filterNodeByOffer(payload));
-// Enviamos la cantidad de hijos que deben tener los nodos a filtrar
-console.log(JsonTreeParserObj.getNodesByAmountOfChildrens(4));
-
-console.log(JsonTreeParserObj.showChidlessNodes());
+console.log("4. Todas las sedes con 4 Medio que sí poseen la oferta Tecnología en sus secciones A: ",JsonTreeParserObj.filterNodeByOffer(payload));
