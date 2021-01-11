@@ -6,28 +6,23 @@
  */
 
 const Nodo = require("./src/Nodo");
-// const ParseCSV = require("./src/ParseCsv");
-const raiz = new Nodo("root", "Raíz");
 
-// const csv = new ParseCSV();
+const parse = require('csv-parse/lib/sync')
+const fs = require('fs'); 
+const { ConvertCSVDataToTree } = require("./src/p2-utils/ParseCsvToTree");
+
+const raiz = new Nodo("root", "Raíz");
 //Agregar a raiz toda la estructura solicitada.
 //...
+console.log(raiz);
 
-// console.log(raiz);
+// Declaramos la ruta del archivo csv a leer
+const filename = './src/input-p2.csv';
 
-const parse = require('csv-parse')
-const fs = require('fs') 
+// Utilizamos la librería fs para leer el archivo CSV y luego la librería csv-parse para parsear los datos un arreglo de objetos que luego serán utilizados
+const CSVdata = fs.readFileSync(filename).toString();
+const records = parse(CSVdata, {delimiter: ',', skip_empty_lines: true});
 
-filename = './src/input-p2.csv';
-
-const data = []
-fs.createReadStream(filename)
-  .pipe(parse({ delimiter: ',' }))
-  .on('data', (r) => {
-    console.log(r);
-    data.push(r);        
-  })
-  .on('end', () => {
-    // console.log(data);
-    console.log('OK');
-  });
+// Llamamos a la función util CSVConvertData que se encargará de leer el arreglo de objetos y se encargará de crear el árbol con padres e hijos.
+raiz.hijos = ConvertCSVDataToTree(records);
+console.log('Nodo ya con arbol de estructura similiar a p1: ,',raiz);

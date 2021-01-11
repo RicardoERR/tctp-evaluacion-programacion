@@ -10,10 +10,10 @@
  */
 
 const data = require("./src/input-p1.json");
-// console.log(data);
+console.log(data);
 
 // Instanciamos al estructura JsonTreeParser que será la encargada de la lógica necesaria para el problema.
-const JsonTreeParser = require('./src/JsonTreeParser')
+const JsonTreeParser = require('./src/p1-utils/JsonTreeParser')
 const JsonTreeParserObj = new JsonTreeParser(data);
 
 console.log("1. Nodos que no tienen hijos: ",JsonTreeParserObj.showChidlessNodes());
