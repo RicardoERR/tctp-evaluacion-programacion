@@ -1,3 +1,18 @@
+## Desarrollo evaluación para proceso de postulación Tu Clase Tu País por Ricardo Riveros Rivera.
+
+##### La estructura de los archivos utiles desarrollados para esta evaluación son los siguientes:
+- src/p1-utils
+    - JsonTree.Utils.js
+    - JsonTreeParser.js
+-   src/p2-utils
+    - ParseCsvToTree.
+
+##### Librerías utilizadas para el desarrollo:
+  1.  fs
+  2.  csv-parse
+
+De antemano muchísimas gracias por la oportunidad de rendir esta evaluación!.
+
 ![Image](https://www.tuclase.cl/wp-content/uploads/2019/11/Logo-tu-clase-tu-pais.png)
 
 # Evaluación de programación
